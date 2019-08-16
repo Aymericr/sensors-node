@@ -2,22 +2,20 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const https = require('https');
-const port = process.env.PORT || 8080;
-
-app.use(express.json());
-app.listen(port, () => console.log(`Listening on port ${port}!`));
+// const port = process.env.PORT || 8080;
+// const dev = process.env.NODE_ENV !== 'production';
 
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
-  handlePreflightRequest: (req, res) => {
-    const headers = {
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
-      "Access-Control-Allow-Credentials": true
-    };
-    res.writeHead(200, headers);
-    res.end();
-  }
+  // handlePreflightRequest: (req, res) => {
+  //   const headers = {
+  //     "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  //     "Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+  //     "Access-Control-Allow-Credentials": true
+  //   };
+  //   res.writeHead(200, headers);
+  //   res.end();
+  // }
 });
 
 let socketIds;
@@ -50,7 +48,7 @@ io.on('connection', (socket) => {
 
 server.listen(8000);
 
-app.get('/', function (req, res) {
-  // console.log('GET', req);
-  res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', function (req, res) {
+//   // console.log('GET', req);
+//   res.sendFile(__dirname + '/index.html');
+// });
