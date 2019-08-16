@@ -1,0 +1,11 @@
+{
+  "name": "sensors-node",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "PORT=8080 node server.js"
+  }
+}
